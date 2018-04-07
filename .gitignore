@@ -7,6 +7,9 @@ tmp/
 node_modules/
 jaxws/jaxws-client/src/main/
 
+.gradle
+gradle/wrapper
+
 # OS Files #
 .DS_Store
 *.class
