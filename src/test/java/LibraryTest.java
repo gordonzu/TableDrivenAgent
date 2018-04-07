@@ -41,6 +41,12 @@ public class LibraryTest {
     @Test public void testExistingSequences() {
         assertEquals(ACTION_1, agent.execute(new DynamicPercept("key1", "value1")));
         assertEquals(ACTION_2, agent.execute(new DynamicPercept("key1", "value2")));
+        assertEquals(ACTION_3, agent.execute(new DynamicPercept("key1", "value3")));
+    }
+
+    @Test public void testNonExistingSequence() {
+        assertEquals(ACTION_1, agent.execute(new DynamicPercept("key1", "value1")));
+        assertEquals(NoOpAction.NO_OP, agent.execute(new DynamicPercept("key1", "value3")));
     }
 
     private static List<Percept> createPerceptSequence(Percept... percepts) {
