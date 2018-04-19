@@ -60,6 +60,10 @@ public abstract class DynamicAttributes {
         return copy;
     }
 
+    public int getMapSize() {
+        return attributes.size();
+    } 
+
     @Override
     public boolean equals(Object o) {
         return o != null && getClass() == o.getClass()
