@@ -1,12 +1,12 @@
 
 
 public abstract class AbstractAgent implements BaseAgent {
-    protected AgentProgram program;
+    protected TableDrivenAgentProgram program;
     private boolean alive = true;
 
     public AbstractAgent() {}
 
-    public AbstractAgent(AgentProgram aProgram) {
+    public AbstractAgent(TableDrivenAgentProgram aProgram) {
         program = aProgram;
     }
 

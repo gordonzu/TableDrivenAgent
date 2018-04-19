@@ -9,29 +9,37 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
-public class LibraryTest {
+public class TableDrivenAgentProgramTest {
 
     private static final Action ACTION_1 = new DynamicAction("action1");
     private static final Action ACTION_2 = new DynamicAction("action2");
     private static final Action ACTION_3 = new DynamicAction("action3");
 
-    private Map<List<Percept>, Action> actions;
+    private Map<List<Percept>, Action> sequences;
     private AbstractAgent agent;
 
-    @Before public void setUp() {
-        actions = new HashMap<>();
+    private static List<Percept> createPerceptSequence(Percept... percepts) {
+        List<Percept> perceptSeq = new ArrayList<>();
 
-        actions.put(createPerceptSequence(
+        Collections.addAll(perceptSeq, percepts);
+        return perceptSeq;
+    }
+
+
+    @Before public void setUp() {
+        sequences = new HashMap<>();
+
+        sequences.put(createPerceptSequence(
                     new DynamicPercept("key1", "value1")), ACTION_1);
-        actions.put(createPerceptSequence(
+        sequences.put(createPerceptSequence(
                     new DynamicPercept("key1", "value1"),
                     new DynamicPercept("key1", "value2")), ACTION_2);
-        actions.put( createPerceptSequence(
+        sequences.put( createPerceptSequence(
                     new DynamicPercept("key1", "value1"),
                     new DynamicPercept("key1", "value2"),
                     new DynamicPercept("key1", "value3")), ACTION_3);
 
-        agent = new TestAgent(new AgentProgram(actions));
+        agent = new TestAgent(new TableDrivenAgentProgram(sequences));
     }
 
     @Test public void testTable() {
@@ -48,11 +56,6 @@ public class LibraryTest {
         assertEquals(ACTION_1, agent.execute(new DynamicPercept("key1", "value1")));
         assertEquals(NoOpAction.NO_OP, agent.execute(new DynamicPercept("key1", "value3")));
     }
-
-    private static List<Percept> createPerceptSequence(Percept... percepts) {
-        List<Percept> perceptSeq = new ArrayList<>();
-
-        Collections.addAll(perceptSeq, percepts);
-        return perceptSeq;
-    }
 }
+
+

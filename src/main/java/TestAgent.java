@@ -4,7 +4,7 @@ public class TestAgent extends AbstractAgent {
     public TestAgent() {
     }
 
-    public TestAgent(AgentProgram agent) {
+    public TestAgent(TableDrivenAgentProgram agent) {
         super(agent);
     }
 }

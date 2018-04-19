@@ -20,9 +20,8 @@ public class DynamicPercept extends DynamicAttributes implements Percept {
         }
     }
 
-/*    @Override
+    @Override
     public String describeType() {
         return Percept.class.getSimpleName();
     }
-*/
 }

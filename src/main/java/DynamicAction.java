@@ -8,6 +8,10 @@ public class DynamicAction extends DynamicAttributes implements Action {
         this.setAttribute(ATTRIBUTE_NAME, name);
     }
 
+    public String getName() {
+        return (String) getAttribute(ATTRIBUTE_NAME);
+    }
+
     public boolean isNoOp() {
         return false;
     }
